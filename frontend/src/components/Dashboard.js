@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import BoardStatus from './BoardStatus';
-import OntRegister from '../ontregister';
+import OntRegister from './OntRegister';  // Import the new component
+import BoardExplorer from './BoardExplorer';  // Import the new component
 import OLTLogout from './OLTLogout';
 
 const Dashboard = ({ isOLTLoggedIn, handleLogout }) => {
-  const [activeTab, setActiveTab] = useState('status');
+  const [activeTab, setActiveTab] = useState('explorer');  // Default to explorer
   
   if (!isOLTLoggedIn) {
     return (
@@ -21,6 +22,14 @@ const Dashboard = ({ isOLTLoggedIn, handleLogout }) => {
       <OLTLogout handleLogout={handleLogout} />
       
       <ul className="nav nav-tabs mb-3">
+        <li className="nav-item">
+          <button 
+            className={`nav-link ${activeTab === 'explorer' ? 'active' : ''}`}
+            onClick={() => setActiveTab('explorer')}
+          >
+            Board Explorer
+          </button>
+        </li>
         <li className="nav-item">
           <button 
             className={`nav-link ${activeTab === 'status' ? 'active' : ''}`}
@@ -40,6 +49,7 @@ const Dashboard = ({ isOLTLoggedIn, handleLogout }) => {
       </ul>
       
       <div className="tab-content">
+        {activeTab === 'explorer' && <BoardExplorer />}
         {activeTab === 'status' && <BoardStatus />}
         {activeTab === 'register' && <OntRegister />}
       </div>

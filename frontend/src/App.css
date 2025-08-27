@@ -12,7 +12,17 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.olt-output {
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 12px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  max-height: 500px;
+  overflow-y: auto;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
